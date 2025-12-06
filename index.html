@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secret Santa</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #fff3d6;
+      text-align: center;
+      padding: 40px;
+    }
+    input {
+      padding: 10px;
+      font-size: 18px;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎁 Mystery Maccabee Secret Santa 🎁</h1>
+  <p>Enter your name to get your match:</p>
+
+  <input id="name" placeholder="Type your name" />
+  <button onclick="claim()">Reveal</button>
+
+  <h2 id="result"></h2>
+
+  <script>
+    async function claim() {
+      const name = document.getElementById("name").value.trim();
+
+      if (!name) return;
+
+      const response = await fetch("/claim", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name })
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        document.getElementById("result").innerText = data.error;
+        return;
+      }
+
+      document.getElementById("result").innerHTML =
+        `🎄 Your person is: <b>${data.receiver}</b> 🎄`;
+    }
+  </script>
+
+</body>
+</html>
