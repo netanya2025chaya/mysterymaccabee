@@ -85,9 +85,16 @@ app.post("/claim", (req, res) => {
   return res.json({ receiver: found.receiver, alreadyClaimed: false });
 });
 
+const path = require("path");
+
+// Serve the index.html file
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 
 // Web server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("Secret Santa server running on port " + PORT);
+
 });
