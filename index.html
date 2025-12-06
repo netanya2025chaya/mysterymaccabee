@@ -1,32 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Secret Santa</title>
+  <title>RosenDruyan Mystery Maccabee</title>
   <style>
     body {
-      font-family: Arial;
-      background: #fff3d6;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: linear-gradient(#e6f3ff, #ffffff);
       text-align: center;
       padding: 40px;
+      color: #003366;
     }
+
+    h1 {
+      color: #0a3d62;
+      font-size: 40px;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 2px #d4af37;
+    }
+
+    .instructions {
+      background: #fefcf5;
+      border: 2px solid #d4af37;
+      border-radius: 12px;
+      padding: 20px;
+      width: 80%;
+      margin: 0 auto 40px auto;
+      font-size: 18px;
+      line-height: 1.5;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .instructions b {
+      color: #0a3d62;
+    }
+
     input {
-      padding: 10px;
-      font-size: 18px;
+      padding: 12px;
+      font-size: 20px;
+      border-radius: 8px;
+      border: 2px solid #0a3d62;
+      width: 250px;
+      text-align: center;
+      margin-top: 15px;
     }
+
     button {
-      padding: 10px 15px;
-      font-size: 18px;
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 20px;
       cursor: pointer;
+      background: #0a3d62;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #145a8d;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 26px;
+      color: #d4af37;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px #003366;
+    }
+
+    .decor {
+      width: 120px;
+      margin: 20px auto;
     }
   </style>
 </head>
 <body>
 
-  <h1>🎁 Mystery Maccabee Secret Santa 🎁</h1>
-  <p>Enter your name to get your match:</p>
+  <!-- Decorations -->
+  <img class="decor" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Menorah_2.png/240px-Menorah_2.png">
+  <img class="decor" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Dreidel.svg/240px-Dreidel.svg.png">
 
-  <input id="name" placeholder="Type your name" />
-  <button onclick="claim()">Reveal</button>
+  <h1>RosenDruyan Mystery Maccabee</h1>
+
+  <!-- Instructions Box -->
+  <div class="instructions">
+    <p><b>Welcome to our Mystery Maccabee!</b><br><br>
+    The rules are as follows:<br><br>
+    1. Type your name ("Bubby" or "Micah") into the box below and see who you are gifting.<br>
+    2. Set out on an adventure and spend up to 20₪ buying that person a gift which you think they will enjoy.<br>
+    3. Wrap the gift so it will remain a mystery.<br>
+    4. Bring your gift to the RosenDruyan Chanukkah party on the first night of Chanukah.<br><br>
+    We shall have a grand unwrapping ceremony together!<br>
+    <b>Good luck and enjoy!</b>
+    </p>
+  </div>
+
+  <input id="name" placeholder="Enter your name..." />
+  <br>
+  <button onclick="claim()">Reveal My Match</button>
 
   <h2 id="result"></h2>
 
@@ -50,7 +121,7 @@
       }
 
       document.getElementById("result").innerHTML =
-        `🎄 Your person is: <b>${data.receiver}</b> 🎄`;
+        `🎁 Your person is: <span style="color:#0a3d62;">${data.receiver}</span> 🎁`;
     }
   </script>
 
